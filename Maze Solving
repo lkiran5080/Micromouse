@@ -29,51 +29,51 @@ int checkblock(i)
   left = 0.01723 * readUltrasonicDistance(2, 3);
   front = 0.01723 * readUltrasonicDistance(4, 5);
   right = 0.01723 * readUltrasonicDistance(6, 7);
-  if (left < 10) 
+  if (left < 10)
   {
-    if (front < 10) 
+    if (front < 10)
     {
-      if (right < 10) 
+      if (right < 10)
       {
         walk = 111;
-      } 
+      }
       else
       {
         walk = 110;
       }
     }
-    else 
+    else
     {
-      if (right < 10) 
+      if (right < 10)
       {
         walk = 101;
-      } 
-      else 
+      }
+      else
       {
         walk = 100;
       }
     }
-  } 
+  }
   else
    {
-    if (front < 10) 
+    if (front < 10)
     {
-      if (right < 10) 
+      if (right < 10)
       {
         walk = 11;
-      } 
-      else 
+      }
+      else
       {
         walk = 10;
       }
-    } 
-    else 
+    }
+    else
     {
-      if (right < 10) 
+      if (right < 10)
       {
         walk = 1;
-      } 
-      else 
+      }
+      else
       {
         walk = 0;
       }
@@ -95,7 +95,7 @@ void loop()
   /*digitalWrite(9, HIGH);
   digitalWrite(8, LOW);// for ultrasonic sensor pins vcc and gnd
   */
-  
+
   motor[i] = checkblock(i);
   EEPROM.write(address,motor[i]);
   i++;address+=4;//since every integer takes 4 bytes or 2 bytes
@@ -104,7 +104,7 @@ void loop()
   {
     if((motor[i-3]==100 && motor[i-2]==110 && motor[i-1]==110 && motor[i]==110)
       ||(motor[i-3]==001 && motor[i-2]==011 && motor[i-1]==011 && motor[i]==011))
-      
+
     {
       //___________
      //|           |
@@ -113,7 +113,7 @@ void loop()
      //|           |
      //|___________
       //___________
-     //|           
+     //|
      //|           |
      //|           |
      //|           |
@@ -134,7 +134,7 @@ void loop()
       digitalWrite(8,LOW);
       digitalWrite(10,LOW);
       delay(3000);
-       
+
     }
   }
 }
